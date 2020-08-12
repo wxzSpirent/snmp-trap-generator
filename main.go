@@ -58,6 +58,8 @@ func main() {
 	}
 	defer gosnmp.Default.Conn.Close()
 
+	fmt.Printf("connect to %s at port %d\n", *host, *port)
+
 	for _, t := range traps {
 		pdu := gosnmp.SnmpPDU{
 			Name:  ".1.3.6.1.6.3.1.1.4.1.0",
