@@ -23,15 +23,19 @@ $(DIST_DIR)/:
 
 $(WINDOWS32_BIN): $(DIST_DIR)/
 	GOOS=windows GOARCH=386 go build -o $@ .
+	cp trap-input.txt $(DIST_DIR)/win-x86/
 
 $(WINDOWS64_BIN): $(DIST_DIR)/
 	GOOS=windows GOARCH=amd64 go build -o $@ .
+	cp trap-input.txt $(DIST_DIR)/win-x64/
 
 $(LINUX32_BIN): $(DIST_DIR)/
 	GOOS=windows GOARCH=386 go build -o $@ .
+	cp trap-input.txt $(DIST_DIR)/linux-32/
 
 $(LINUX64_BIN): $(DIST_DIR)/
 	GOOS=windows GOARCH=amd64 go build -o $@ .
+	cp trap-input.txt $(DIST_DIR)/linux-64/
 
 windows: $(WINDOWS32_BIN) $(WINDOWS64_BIN)
 	@echo "===> Built $^"
